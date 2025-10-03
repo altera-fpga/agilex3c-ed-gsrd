@@ -142,8 +142,6 @@ module legacy_baseline_top (
     //
     wire usb31_phy_pma_cpu_clk_clk;
     wire o_pma_cpu_clk;
-    wire i_refclk_bus_out;
-    assign i_refclk_bus_out = 1'b0;
     assign usb31_phy_pma_cpu_clk_clk = o_pma_cpu_clk;
 
     // Create a heartbeat counter
@@ -241,7 +239,6 @@ module legacy_baseline_top (
         .usb31_phy_tx_serial_n_o_tx_serial_n  (),
         .usb31_phy_tx_serial_p_o_tx_serial_p  (),
         .usb31_phy_pma_cpu_clk_clk            (usb31_phy_pma_cpu_clk_clk),
-        .i_refclk_bus_out_refclk_bus_out      (i_refclk_bus_out),
         .o_pma_cu_clk_clk                     (o_pma_cpu_clk),
         .hps_io_usb1_clk                      (hps_usb1_CLK),
         .hps_io_usb1_stp                      (hps_usb1_STP),
@@ -264,5 +261,3 @@ module legacy_baseline_top (
     );
 
 endmodule
-
-

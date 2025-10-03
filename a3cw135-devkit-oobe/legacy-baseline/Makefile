@@ -81,7 +81,9 @@ $(strip $(1))-qsys-ip-file-upgrade: pre-prep
 	quartus_sh --ip_upgrade $(PROJECT_NAME) -revision $(strip $(1)) -mode all
 
 $(strip $(1))-ip-upgrade: pre-prep | output_files
+	chmod a-w $(strip $(1)).qsf
 	flock --verbose output_files/ipupgrade.lock $(MAKE) $(strip $(1))-qsys-ip-file-upgrade
+	chmod +w $(strip $(1)).qsf
 
 $(strip $(1))-generate-design :
 
@@ -108,7 +110,7 @@ output_files $(INSTALL_ROOT):
 
 output_files/pre-prep.done: | output_files
  	# Write protect QPF so it doesn't get modified when switching revisions
-	chmod a-w $(PROJECT_NAME).qpf 
+	chmod a-w $(PROJECT_NAME).qpf
 	touch $@
 
 output_files/prep-%.done: output_files/pre-prep.done | output_files
@@ -144,7 +146,7 @@ output_files/%.sof: output_files/prep-%.done
 	quartus_sta top -c $* --mode=finalize
 	quartus_asm top -c $*
 	quartus_pow top -c $*
-	mv $*.qptc output_files/$*.qptc
+	mv $*.qpta output_files/$*.qpta
 
 # Clean all files
 .PHONY: clean

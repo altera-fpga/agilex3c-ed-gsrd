@@ -2,7 +2,7 @@
 
 This repository contains Golden Hardware Reference Design (GHRD) for Agilex 3 C-Series System On Chip (SoC) FPGA.
 The GHRD is part of the Golden System Reference Design (GSRD), which provides a complete solution, including exercising soft IP in the fabric, booting to U-Boot, then Linux, and running sample Linux applications.
-Refer to the [Altera FPGA Developer Site](https://altera-fpga.github.io/latest/ed-demo-list/ed-list/) for information about GSRD.
+Refer to the [HPS GSRD User Guide for the Agilex 3 C-Series Development Kit](https://altera-fpga.github.io/latest/embedded-designs/agilex-3/c-series/gsrd/ug-gsrd-agx3/) for information about GSRD.
 
 The [designs](#designs) are stored in individual folders. Each design can be opened, modified and compiled by using Quartus Prime software.
 GHRD releases are created for each version of Quartus Prime Software. It is recommended to use the release for your version of Quartus Prime.
@@ -27,7 +27,7 @@ This is applicable to all designs.
 3. modify and compile the [designs](#designs) with Quartus Prime.
 
 ## Dependency
-* Altera Quartus Prime 25.1.1
+* Altera Quartus Prime 25.3
 * Supported Board
   - Agilex 3 FPGA and SoC C-Series Development Kit: [Devkit User Guide](https://www.intel.com/content/www/us/en/docs/programmable/851698/current)
   ![Agilex 3 FPGA and SoC C-Series Development Kit](images/agilex3_soc_devkit.png)
@@ -35,17 +35,18 @@ This is applicable to all designs.
 ## Tested Platform for the GHRD Build Flow
 * SUSE Linux Enterprise Server 15 SP4
 
+
 ## Setup
 
 Several tools are required to be in the path.
 
-* Altera Quartus Prime 25.1.1
+* Altera Quartus Prime 25.3
 * Python 3.11.5 (only required when using command line to build)
 
 ### Example Setup for Altera Quartus Prime tools
 This is recommended, when using command line to build.
 ```bash
-export QUARTUS_ROOTDIR=~/intelFPGA_pro/25.1.1/quartus
+export QUARTUS_ROOTDIR=~/intelFPGA_pro/25.3/quartus
 ```
 Note: Adapt the path above to where Quartus Prime is installed.
 
