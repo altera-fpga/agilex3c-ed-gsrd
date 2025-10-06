@@ -1,13 +1,13 @@
-# a3cw135-devkit-oobe-legacy-baseline
+# HPS Baseline System Example Design for Agilex 3 FPGA and SoC C-Series Development Kit
 
 This is the baseline Golden Hardware Reference Design (GHRD) for Agilex 3 FPGA and SoC C-Series Development Kit.
 
 ## Description
 
-Agilex 3 GHRD is a reference design for Intel Agilex 3 System On Chip (SoC) FPGA.
+Agilex 3 GHRD is a reference design for Altera Agilex 3 System On Chip (SoC) FPGA.
 
 The GHRD is part of the Golden System Reference Design (GSRD), which provides a complete solution, including exercising soft IP in the fabric, booting to U-Boot, then Linux, and running sample Linux applications.
-Refer to the [Altera FPGA Developer Site](https://altera-fpga.github.io/latest/ed-demo-list/ed-list/) for information about GSRD.
+Refer to the [HPS GSRD User Guide for the Agilex 3 C-Series Development Kit](https://altera-fpga.github.io/latest/embedded-designs/agilex-3/c-series/gsrd/ug-gsrd-agx3/) for information about GSRD.
 
 The design uses HPS First configuration mode.
 
@@ -27,20 +27,27 @@ This reference design demonstrates the following system integration between Hard
 ## Project Details
 
 - **Family**: Agilex 3
-- **Quartus Version**: 25.1.1
+- **Quartus Version**: 25.3
 - **Development Kit**: Agilex 3 FPGA and SoC C-Series Development Kit DK-A3W135BM16AEA
 - **Device Part**: A3CW135BM16AE6S
-- **Category**: Golden Hardware Reference Design (GHRD)
+- **Category**: HPS
 - **Source**: Quartus Prime Pro
 - **URL**: https://www.github.com/altera-fpga/agilex3c-ed-gsrd
 - **Design Package**: a3cw135-devkit-oobe-legacy-baseline.zip
-- **Documentations**: Link TBD - Refer to this README.
+
+## Documentations
+
+- **Title**: HPS GSRD User Guide for the Agilex 3 C-Series Development Kit
+**URL**: https://altera-fpga.github.io/latest/embedded-designs/agilex-3/c-series/gsrd/ug-gsrd-agx3/
+- **Title**: GHRD README for the Agilex 3 FPGA and SoC C-Series Development Kit
+**URL**: https://github.com/altera-fpga/agilex3c-ed-gsrd/blob/main/a3cw135-devkit-oobe/legacy-baseline/README.md
+
 ## GHRD Overview
 ![GHRD_overview](/images/agilex3_ghrd_overview.svg)
 
 ## Hard Processor System (HPS)
 The GHRD HPS configuration matches the board schematic.
-Refer to [Hard Processor System Technical Reference Manual: Agilex 3 SoCs](https://www.intel.com/content/www/us/en/docs/programmable/848530/current) and [Hard Processor System Component Reference Manual: Agilex 3 SoCs](https://www.intel.com/content/www/us/en/docs/programmable/851703/current) for more information on HPS configuration.
+Refer to [Hard Processor System Technical Reference Manual: Agilex 3 SoCs](https://www.intel.com/content/www/us/en/docs/programmable/848530/current/hard-processor-system-technical-reference.html) and [Hard Processor System Component Reference Manual: Agilex 3 SoCs](https://www.intel.com/content/www/us/en/docs/programmable/851703/current) for more information on HPS configuration.
 
 ## HPS External Memory Interfaces (EMIF)
 The GHRD HPS EMIF configuration matches the board schematic.
@@ -50,7 +57,8 @@ Refer to [External Memory Interfaces (EMIF) IP User Guide: Agilex 3 FPGAs and So
 Bridges are used to move data between FPGA fabric and HPS logic.
 Refer to [HPS Bridges](https://www.intel.com/content/www/us/en/docs/programmable/851703/current/hps-fpga-bridges.html)
 
-The HPS address map and the FPGA address map are the same for Agilex 3. Refer to [Total Address Map Graphical](https://www.intel.com/content/www/us/en/docs/programmable/848530/current/total-address-map-graphical.html) for more information.
+The HPS address map and the FPGA address map are the same for Agilex 3.
+Refer to [Total Address Map Graphical](https://www.intel.com/content/www/us/en/docs/programmable/848530/current/total-address-map-graphical.html) for more information.
 
 Therefore, when accessing HPS logic in uboot or linux, the base address would be the same as, when using [Debug Subsystem](#Debug-Subsystem) from FPGA fabric.
 

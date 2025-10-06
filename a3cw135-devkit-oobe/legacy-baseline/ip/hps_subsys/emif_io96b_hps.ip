@@ -16,14 +16,14 @@ https://fpgasoftware.intel.com/eula.-->
   <ipxact:vendor>Altera Corporation</ipxact:vendor>
   <ipxact:library>emif_io96b_hps</ipxact:library>
   <ipxact:name>emif_io96b_hps_inst</ipxact:name>
-  <ipxact:version>4.0.0</ipxact:version>
+  <ipxact:version>4.1.0</ipxact:version>
   <ipxact:busInterfaces>
     <ipxact:busInterface>
       <ipxact:name>io96b0_to_hps</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="25.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="25.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="25.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="25.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -545,10 +545,10 @@ https://fpgasoftware.intel.com/eula.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>mem_0</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="25.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="25.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="25.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="25.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -630,10 +630,10 @@ https://fpgasoftware.intel.com/eula.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>mem_ck_0</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="25.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="25.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="25.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="25.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -675,10 +675,10 @@ https://fpgasoftware.intel.com/eula.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>mem_reset_n</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="25.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="25.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="25.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="25.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -712,10 +712,10 @@ https://fpgasoftware.intel.com/eula.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>oct_0</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="25.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="25.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="25.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="25.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -749,10 +749,10 @@ https://fpgasoftware.intel.com/eula.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>ref_clk</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="25.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="25.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="25.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="25.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1968,7 +1968,7 @@ https://fpgasoftware.intel.com/eula.-->
       <ipxact:vendor>Altera Corporation</ipxact:vendor>
       <ipxact:library>emif_io96b_hps</ipxact:library>
       <ipxact:name>emif_io96b_hps</ipxact:name>
-      <ipxact:version>4.0.0</ipxact:version>
+      <ipxact:version>4.1.0</ipxact:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <ipxact:parameters>
@@ -2103,7 +2103,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum _originalVersion
       {
-         value = "3.0.0";
+         value = "4.0.0";
          type = "String";
       }
       datum _sortIndex
@@ -3198,7 +3198,7 @@ https://fpgasoftware.intel.com/eula.-->
               <ipxact:parameter parameterId="ADV_CAL_ENABLE_REQ" type="bit">
                 <ipxact:name>ADV_CAL_ENABLE_REQ</ipxact:name>
                 <ipxact:displayName>Enable REQ Calibration</ipxact:displayName>
-                <ipxact:value>true</ipxact:value>
+                <ipxact:value>false</ipxact:value>
               </ipxact:parameter>
               <ipxact:parameter parameterId="ADV_CAL_ENABLE_MARGIN" type="bit">
                 <ipxact:name>ADV_CAL_ENABLE_MARGIN</ipxact:name>
@@ -3448,7 +3448,7 @@ https://fpgasoftware.intel.com/eula.-->
               <ipxact:parameter parameterId="ADV_CAL_ENABLE_WEQ" type="bit">
                 <ipxact:name>ADV_CAL_ENABLE_WEQ</ipxact:name>
                 <ipxact:displayName>Enable WEQ Calibration</ipxact:displayName>
-                <ipxact:value>true</ipxact:value>
+                <ipxact:value>false</ipxact:value>
               </ipxact:parameter>
               <ipxact:parameter parameterId="PHY_TERM_X_R_T_DQ_INPUT_OHM" type="string">
                 <ipxact:name>PHY_TERM_X_R_T_DQ_INPUT_OHM</ipxact:name>
