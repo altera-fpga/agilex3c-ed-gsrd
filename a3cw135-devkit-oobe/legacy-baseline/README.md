@@ -15,7 +15,7 @@ The design uses HPS First configuration mode.
 This reference design demonstrates the following system integration between Hard Processor System (HPS) and FPGA IPs:
 - Hard Processor System (HPS) enablement and configuration
   - Enable dual core Arm Cortex-A55 processor
-  - HPS Peripheral and I/O (SD/MMC, EMAC, MDIO, USB, I3C, JTAG, UART, and GPIO)
+  - HPS Peripheral and I/O (SD/MMC, EMAC, MDIO, USB, I2C, I3C, JTAG, UART, and GPIO)
   - HPS Clock and Reset
   - HPS FPGA Bridge and Interrupt
 - HPS EMIF configuration (Inline ECC for LPDDR4 is enabled by default)
@@ -27,7 +27,7 @@ This reference design demonstrates the following system integration between Hard
 ## Project Details
 
 - **Family**: Agilex 3
-- **Quartus Version**: 25.3
+- **Quartus Version**: 25.3.1
 - **Development Kit**: Agilex 3 FPGA and SoC C-Series Development Kit DK-A3W135BM16AEA
 - **Device Part**: A3CW135BM16AE6S
 - **Category**: HPS
@@ -43,6 +43,10 @@ This reference design demonstrates the following system integration between Hard
 **URL**: https://github.com/altera-fpga/agilex3c-ed-gsrd/blob/main/a3cw135-devkit-oobe/legacy-baseline/README.md
 
 ## GHRD Overview
+Note for *USB3.1:
+Agilex 3 Hard Processor System supports USB3.1.
+However, Agilex 3 FPGA and SoC C-Series Development Kit does not have transceiver (XCVR) for USB3.1.
+Therefore, the board only supports USB 2.0 ULPI interface via USB 3.1 controller.
 ![GHRD_overview](/images/agilex3_ghrd_overview.svg)
 
 ## Hard Processor System (HPS)
