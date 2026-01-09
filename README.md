@@ -12,7 +12,7 @@ These reference designs demonstrate the system integration between Hard Processo
 This is applicable to all designs.
 - Hard Processor System (HPS) enablement and configuration
   - Enable dual core Arm Cortex-A55 processor
-  - HPS Peripheral and I/O (SD/MMC, EMAC, MDIO, USB, I3C, JTAG, UART, and GPIO)
+  - HPS Peripheral and I/O (SD/MMC, EMAC, MDIO, USB, I2C, I3C, JTAG, UART, and GPIO)
   - HPS Clock and Reset
   - HPS FPGA Bridge and Interrupt
 - HPS EMIF configuration (Inline ECC for LPDDR4 is enabled by default)
@@ -27,7 +27,7 @@ This is applicable to all designs.
 3. modify and compile the [designs](#designs) with Quartus Prime.
 
 ## Dependency
-* Altera Quartus Prime 25.3
+* Altera Quartus Prime 25.3.1
 * Supported Board
   - Agilex 3 FPGA and SoC C-Series Development Kit: [Devkit User Guide](https://www.intel.com/content/www/us/en/docs/programmable/851698/current)
   ![Agilex 3 FPGA and SoC C-Series Development Kit](images/agilex3_soc_devkit.png)
@@ -40,13 +40,13 @@ This is applicable to all designs.
 
 Several tools are required to be in the path.
 
-* Altera Quartus Prime 25.3
+* Altera Quartus Prime 25.3.1
 * Python 3.11.5 (only required when using command line to build)
 
 ### Example Setup for Altera Quartus Prime tools
 This is recommended, when using command line to build.
 ```bash
-export QUARTUS_ROOTDIR=~/intelFPGA_pro/25.3/quartus
+export QUARTUS_ROOTDIR=~/intelFPGA_pro/25.3.1/quartus
 ```
 Note: Adapt the path above to where Quartus Prime is installed.
 

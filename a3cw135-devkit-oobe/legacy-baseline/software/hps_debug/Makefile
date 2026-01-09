@@ -1,7 +1,7 @@
 ################################################
 #
 # SPDX-License-Identifier: MIT-0
-# Copyright(c) 2023 Intel Corporation.
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 #
 ################################################
 #
