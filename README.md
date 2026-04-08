@@ -15,19 +15,15 @@ This is applicable to all designs.
   - HPS Peripheral and I/O (SD/MMC, EMAC, MDIO, USB, I2C, I3C, JTAG, UART, and GPIO)
   - HPS Clock and Reset
   - HPS FPGA Bridge and Interrupt
+    - Note: The System MMU port in F2H and F2SDRAM bridges are disabled by default in baseline design, unless otherwise specified.
 - HPS EMIF configuration (Inline ECC for LPDDR4 is enabled by default)
 - System integration with FPGA IPs
   - Peripheral subsystem that consists of System ID, Programmable I/O (PIO) IP for controlling PushButton and LEDs.
   - Debug subsystem that consists of JTAG-to-Avalon Master IP to allow System-Console debug activity and FPGA content access through JTAG
   - 256KB of FPGA On-Chip Memory
 
-## The GHRD use cases:
-1. use the precompiled bitstream(sof) in release assets to programm the board.
-2. open and compile the [designs](#designs) with Quartus Prime.
-3. modify and compile the [designs](#designs) with Quartus Prime.
-
 ## Dependency
-* Altera Quartus Prime 25.3.1
+* Altera Quartus Prime 26.1
 * Supported Board
   - Agilex 3 FPGA and SoC C-Series Development Kit: [Devkit User Guide](https://www.intel.com/content/www/us/en/docs/programmable/851698/current)
   ![Agilex 3 FPGA and SoC C-Series Development Kit](images/agilex3_soc_devkit.png)
@@ -35,18 +31,17 @@ This is applicable to all designs.
 ## Tested Platform for the GHRD Build Flow
 * SUSE Linux Enterprise Server 15 SP4
 
-
 ## Setup
 
 Several tools are required to be in the path.
 
-* Altera Quartus Prime 25.3.1
+* Altera Quartus Prime 26.1
 * Python 3.11.5 (only required when using command line to build)
 
 ### Example Setup for Altera Quartus Prime tools
 This is recommended, when using command line to build.
 ```bash
-export QUARTUS_ROOTDIR=~/intelFPGA_pro/25.3.1/quartus
+export QUARTUS_ROOTDIR=~/intelFPGA_pro/26.1/quartus
 ```
 Note: Adapt the path above to where Quartus Prime is installed.
 
@@ -55,38 +50,24 @@ export PATH="$QUARTUS_ROOTDIR/bin:$QUARTUS_ROOTDIR/../qsys/bin:$QUARTUS_ROOTDIR/
 ```
 
 ## Quick start
+
+### Using command line
+- To build the design using command line, refer to the README in each [designs](#designs) for instructions to run the desired make command.
+
+### Using Quartus GUI
+- Launch Quartus.
+- Open the project. Example: a3cw135-devkit-oobe/baseline/top.qpf
+- Click the play button to compile the design.
+- The compiled sof can be found in output_files folder of the project path.
+
 ### Notes
 - Command line and Quartus GUI should not be used intertwined.
-- Mixing both might not generate some fileset correctly and fail the build.
-
-### using command line
-Copy and run the desired make command from [designs](#designs) in the root directory.
-After build, the design files (zip, sof and rbf) can be found in install/designs folder.
-
-### using Quartus GUI
-- Launch Quartus.
-- Open the project. Example: a3cw135-devkit-oobe/legacy-baseline/top.qpf
-- Click the play button to compile the design.
-- The compiled sof can be found in output_folders of the project path.
+- Mixing both design build flows might not generate some fileset correctly and fail the build.
 
 ## Designs
 
 ### Agilex 3 FPGA and SoC C-Series Development Kit
 Refer to the individual readme for details of the design.
 
-* [a3cw135-devkit-oobe/legacy-baseline](a3cw135-devkit-oobe/legacy-baseline/README.md) :
-  Legacy baseline GHRD for the Agilex 3 FPGA and SoC C-Series Development Kit.
-```bash
-make a3cw135-devkit-oobe-legacy-baseline-legacy_baseline-all
-```
-
-## Install location:
-After build, the design files (zip, sof and rbf) can be found in install/designs folder.
-These files are also uploaded as github release assets.
-- \<design_name>**.zip**
-  - This is the archeived project files of the individual GHRD.
-- \<design_name>**.sof**
-  - Compiled bitstream. Can be programm on board.
-- \<design_name>**hps_debug.sof**
-  - This bitstream is injected with hps wipe program. This creates a wait loop to boot with arm debugger.
-  Refer [readme](a3cw135-devkit-oobe/legacy-baseline/software/hps_debug/README.md)
+* [a3cw135-devkit-oobe/baseline](a3cw135-devkit-oobe/baseline/README.md) :
+  Baseline GHRD for the Agilex 3 FPGA and SoC C-Series Development Kit.
