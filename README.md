@@ -16,16 +16,16 @@ This is applicable to all designs.
   - HPS Clock and Reset
   - HPS FPGA Bridge and Interrupt
     - Note: The System MMU port in F2H and F2SDRAM bridges are disabled by default in baseline design, unless otherwise specified.
-- HPS EMIF configuration (Inline ECC for LPDDR4 is enabled by default)
+- HPS EMIF configuration (**Inline ECC for LPDDR4 is disabled by default**)
 - System integration with FPGA IPs
-  - Peripheral subsystem that consists of System ID, Programmable I/O (PIO) IP for controlling PushButton and LEDs.
-  - Debug subsystem that consists of JTAG-to-Avalon Master IP to allow System-Console debug activity and FPGA content access through JTAG
+  - Peripherals that consists of System ID, Programmable I/O (PIO) IP for controlling PushButton and LEDs.
+  - Niov V subsystem that consists of JTAG-to-Avalon Master IP to allow System-Console debug activity and FPGA content access through JTAG
   - 256KB of FPGA On-Chip Memory
 
 ## Dependency
-* Altera Quartus Prime 26.1
+* Altera Quartus Prime 26.1.1
 * Supported Board
-  - Agilex 3 FPGA and SoC C-Series Development Kit: [Devkit User Guide](https://www.intel.com/content/www/us/en/docs/programmable/851698/current)
+  - Agilex 3 FPGA and SoC C-Series Development Kit: [Devkit User Guide](https://docs.altera.com/r/docs/851698/current/agilextm-3-fpga-and-soc-c-series-development-kit-user-guide/overview)
   ![Agilex 3 FPGA and SoC C-Series Development Kit](images/agilex3_soc_devkit.png)
 
 ## Tested Platform for the GHRD Build Flow
@@ -35,13 +35,13 @@ This is applicable to all designs.
 
 Several tools are required to be in the path.
 
-* Altera Quartus Prime 26.1
+* Altera Quartus Prime 26.1.1
 * Python 3.11.5 (only required when using command line to build)
 
 ### Example Setup for Altera Quartus Prime tools
 This is recommended, when using command line to build.
 ```bash
-export QUARTUS_ROOTDIR=~/intelFPGA_pro/26.1/quartus
+export QUARTUS_ROOTDIR=~/intelFPGA_pro/26.1.1/quartus
 ```
 Note: Adapt the path above to where Quartus Prime is installed.
 
@@ -56,7 +56,7 @@ export PATH="$QUARTUS_ROOTDIR/bin:$QUARTUS_ROOTDIR/../qsys/bin:$QUARTUS_ROOTDIR/
 
 ### Using Quartus GUI
 - Launch Quartus.
-- Open the project. Example: a3cw135-devkit-oobe/baseline/top.qpf
+- Open the project. Example: dk-a3w135bm16aea/baseline/top.qpf
 - Click the play button to compile the design.
 - The compiled sof can be found in output_files folder of the project path.
 
@@ -69,5 +69,8 @@ export PATH="$QUARTUS_ROOTDIR/bin:$QUARTUS_ROOTDIR/../qsys/bin:$QUARTUS_ROOTDIR/
 ### Agilex 3 FPGA and SoC C-Series Development Kit
 Refer to the individual readme for details of the design.
 
-* [a3cw135-devkit-oobe/baseline](a3cw135-devkit-oobe/baseline/README.md) :
+* [dk-a3w135bm16aea/baseline](dk-a3w135bm16aea/baseline/README.md) :
   Baseline GHRD for the Agilex 3 FPGA and SoC C-Series Development Kit.
+
+* [dk-a3w135bm16aea-tsn-dc/tsn-rgmii-hvio](dk-a3w135bm16aea-tsn-dc/tsn-rgmii-hvio/README.md) :
+  Baseline GHRD for the Agilex 3 FPGA and SoC C-Series Development Kit with TSN daughtercard.
