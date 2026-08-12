@@ -1,2 +1,3 @@
 TARGET_SUBDIR += \
-	a3cw135-devkit-oobe
+	dk-a3w135bm16aea \
+	dk-a3w135bm16aea-tsn-dc
