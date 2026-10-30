@@ -3,35 +3,45 @@
 /output_files/
 /qdb/
 /tmp-clearbox/
-/.qsys_edit/
 
-# IP generated subdirectories
-/ip/tsn_rgmii_hvio_top/*
-!/ip/tsn_rgmii_hvio_top/*.ip
+# Log files created by Quartus
+quartus.log
+quartus.rec
+quartus.rec.log.flock
+quartus.log.save
+quartus.rec.save
+serv_req_info.txt
+*.qws
+*.qdf
+*.rpt
 
-/ip/shell_subsys/*
-!/ip/shell_subsys/*.ip
+# IP generated subdirectories (top-level custom IP)
+/src/ip/*
+!/src/ip/*.ip
 
-/ip/fabric_subsys/*
-!/ip/fabric_subsys/*.ip
+# VDS subsystem generated outputs (keep source .vds and checked-in .ip)
+/src/vds/fabric_subsys/*
+!/src/vds/fabric_subsys/ip/*.ip
+!/src/vds/fabric_subsys/*.vds
 
-/ip/niosv_subsys/*
-!/ip/niosv_subsys/*.ip
+/src/vds/hps_subsys/*
+!/src/vds/hps_subsys/ip/*.ip
+!/src/vds/hps_subsys/*.vds
 
-/ip/hps_subsys/*
-!/ip/hps_subsys/*.ip
+/src/vds/niosv_subsys/*
+!/src/vds/niosv_subsys/ip/*.ip
+!/src/vds/niosv_subsys/*.vds
 
-/ip/ddr_gpio/*
+/src/vds/shell_subsys/*
+!/src/vds/shell_subsys/ip/*.ip
+!/src/vds/shell_subsys/*.vds
 
-/tsn_rgmii_hvio_top/
-/fabric_subsys/
-/shell_subsys/
-/niosv_subsys/
-/hps_subsys/
-/output_files/
+/src/vds/tsn_rgmii_hvio_top/*
+!/src/vds/tsn_rgmii_hvio_top/ip/*.ip
+!/src/vds/tsn_rgmii_hvio_top/*.vds
 
+# Simscript directories
 /sim_setup_*/
 
-*.qws
-*_assignment_defaults.qdf
-board.info
+# VDS generated directories
+/gen/

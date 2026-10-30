@@ -298,8 +298,8 @@ kas build kas.yml:bsp.yml
 ```
 
 * `kas.yml` is the base configuration file.
-* `bsp.yml` contains override or additional settings that modify the base.
-* `device-tree.yml` contains device tree specific settings that extend or override the base configuration.
+* `kas/bsp.yml` contains the BSP pins (ATF/U-Boot/Linux branches and versions).
+* `kas/machine.yml` contains machine and device-tree settings (e.g. `MACHINE`, `LINUX_DTS_FILE`, `CUSTOM_LINUX_DTS_FILE`).
 
 This layered approach promotes a clean and maintainable configuration strategy, allowing you to customize specific settings without altering the main configuration directly.
 
@@ -309,11 +309,11 @@ This layered approach promotes a clean and maintainable configuration strategy, 
 header:
   version: 11
   includes:
-    - bsp.yml
-    - device-tree.yml
+    - kas/machine.yml
+    - kas/bsp.yml
 ```
 
-* Here, `bsp.yml`, and `device-tree.yml` are included and merged in that order.
+* Here, `kas/machine.yml` and `kas/bsp.yml` are included and merged in that order.
 * Later files can override or add settings to earlier ones.
 
 **References**

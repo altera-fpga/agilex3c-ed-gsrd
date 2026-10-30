@@ -33,6 +33,11 @@ REVISION_NAMES :=
 
 SIM_ENABLED := 0
 
+# Set defaults
+INSTALL_ROOT_BINARIES ?= $(THIS_MK_DIR)/install/binaries
+INSTALL_ROOT_DESIGNS ?= $(THIS_MK_DIR)/install/designs
+INSTALL_ROOT_ARTIFACTS ?= $(THIS_MK_DIR)/install/artifacts
+
 include $(THIS_MK_DIR)/project_config.mk
 ifeq ($(PROJECT_NAME),)
 $(error PROJECT_NAME is not defined in project_config.mk)
@@ -40,11 +45,6 @@ endif
 ifeq ($(REVISION_NAMES),)
 $(error REVISION_NAMES is not defined in project_config.mk)
 endif
-
-# Set defaults
-INSTALL_ROOT_BINARIES ?= $(THIS_MK_DIR)/install/binaries
-INSTALL_ROOT_DESIGNS ?= $(THIS_MK_DIR)/install/designs
-INSTALL_ROOT_ARTIFACTS ?= $(THIS_MK_DIR)/install/artifacts
 ARCHIVE_NAME ?= $(PROJECT_NAME)
 
 # Set constants
@@ -156,15 +156,18 @@ output_files/prep-%.done: output_files/pre-prep.done | output_files
 .PHONY: pre-prep
 pre-prep: output_files/pre-prep.done
 
-$(INSTALL_ROOT_DESIGNS)/$(ARCHIVE_NAME).zip: pre-prep | $(INSTALL_ROOT_DESIGNS)
- 	# Validate metadata in the README.md
+.PHONY: validate-readme-metadata
+validate-readme-metadata:
+ 	# Validate QP_INFO metadata in design README.md (run via style-check-readme-metadata in CI)
 ifneq ($(NO_ENFORCE_README_VALIDATION),1)
 	quartus_sh --validate_metadata -file README.md -strict
 else
 	quartus_sh --validate_metadata -file README.md
 endif
-	rm validate_metadata_log.txt
-	# Add root README.md first so quartus_sh create_metadata always picks it up before any nested README.md files.
+	rm -f validate_metadata_log.txt
+
+$(INSTALL_ROOT_DESIGNS)/$(ARCHIVE_NAME).zip: pre-prep | $(INSTALL_ROOT_DESIGNS)
+ 	# Add root README.md first so quartus_sh create_metadata always picks it up before any nested README.md files.
 	zip $@ README.md
 	zip -r -g $@ * -x .gitignore "output_files/*" "qdb/*" "dni/*" "tmp-clearbox/*" "README.md"
 
@@ -236,9 +239,11 @@ install : $(ALL_INSTALL_TARGETS)
 print-targets:
 	$(info $(ALL_TARGET_STEM_NAMES))
 
-# Run script to upgrade IP and QSYS files
+# Run qsys-script only when a top-level Qsys system exists (VDS-only designs omit *_top.qsys)
 ip-upgrade-helper:
+ifneq ($(wildcard *_top.qsys),)
 	qsys-script --qpf=$(PROJECT_NAME) --script=qsys_update.tcl --system-file=$(wildcard *_top.qsys) --search-path="custom_ip/**/*, $$"
+endif
 
 ###############################################################################
 #                           SW Build Targets

@@ -28,12 +28,12 @@ Refer to the <a href=\"https://altera-fpga.github.io/latest/embedded-designs/agi
 ## Project Details
 
 - **Family**: Agilex 3
-- **Quartus Version**: 26.1.1
+- **Quartus Version**: 26.3
 - **Development Kit**: Agilex 3 FPGA and SoC C-Series Development Kit DK-A3W135BM16AEA
 - **Device Part**: A3CW135BM16AE6S
 - **Category**: HPS
 - **Source**: Quartus Prime Pro
-- **URL**: https://www.github.com/altera-fpga/agilex3c-ed-gsrd
+- **URL**: https://github.com/altera-fpga/agilex3-ed-hps-baseline
 - **Design Package**: dk-a3w135bm16aea-baseline.zip
 
 ## Documentations
@@ -41,7 +41,7 @@ Refer to the <a href=\"https://altera-fpga.github.io/latest/embedded-designs/agi
 - **Title**: HPS GSRD User Guide for the Agilex 3 C-Series Development Kit
 **URL**: https://altera-fpga.github.io/latest/embedded-designs/agilex-3/c-series/gsrd/ug-gsrd-agx3/
 - **Title**: GHRD README for the Agilex 3 FPGA and SoC C-Series Development Kit
-**URL**: https://github.com/altera-fpga/agilex3c-ed-gsrd/blob/main/dk-a3w135bm16aea/baseline/README.md
+**URL**: https://github.com/altera-fpga/agilex3-ed-hps-baseline/blob/main/dk-a3w135bm16aea/baseline/README.md
 
 ## GHRD Overview
 **Note for USB3.1**:
@@ -49,7 +49,7 @@ Agilex 3 Hard Processor System supports USB3.1.
 However, Agilex 3 FPGA and SoC C-Series Development Kit does not have transceiver (XCVR) for USB3.1.
 Therefore, the board only supports USB 2.0 ULPI interface via USB 3.1 controller.
 
-![GHRD_overview](/images/oobe-baseline-overview-no-f2h.png)
+![GHRD_overview](images/oobe-baseline-overview-no-f2h.png)
 
 ## Hard Processor System (HPS)
 The GHRD HPS configuration matches the board schematic.
@@ -61,10 +61,10 @@ Refer to [External Memory Interfaces (EMIF) IP User Guide: Agilex 3 FPGAs and So
 
 ## Bridges
 Bridges are used to move data between FPGA fabric and HPS logic.
-Refer to [HPS Bridges](https://docs.altera.com/r/docs/851703/26.1/hard-processor-system-component-reference-manual-agilextm-3-socs/fpga-bridges)
+Refer to [HPS Bridges](https://docs.altera.com/r/docs/851703/26.3/hard-processor-system-component-reference-manual-agilex-3-socs/fpga-bridges)
 
 The HPS address map and the FPGA address map are the same for Agilex 3.
-Refer to [Total Address Map Graphical](https://docs.altera.com/r/docs/848530/26.1/hard-processor-system-technical-reference-manual-agilextm-3-socs/total-address-map-graphical) for more information.
+Refer to [Total Address Map Graphical](https://docs.altera.com/r/docs/848530/26.3/hard-processor-system-technical-reference-manual-agilex-3-socs/total-address-map-graphical) for more information.
 
 Therefore, when accessing HPS logic in uboot or linux, the base address would be the same as, when using [Debug Subsystem](#Debug-Subsystem) from FPGA fabric.
 
@@ -79,7 +79,7 @@ Therefore, when accessing HPS logic in uboot or linux, the base address would be
 ### NiosV Subsystem
 The GHRD JTAG UART IP interfaces allows you to access peripherals in the FPGA with System Console, through the JTAG UART IP module. This access does not rely on HPS software drivers.
 
-Refer to this [Guide](https://docs.altera.com/r/docs/683819/26.1/quartus-prime-pro-edition-user-guide-debug-tools/introduction-to-system-console) for information about system console.
+Refer to this [Guide](https://docs.altera.com/r/docs/683819/26.3/quartus-prime-pro-edition-user-guide-debug-tools/introduction-to-system-console) for information about system console.
 
 | NiosV                                | Attribute                    | Addresss Offset                           | Size (bytes)     |
 |:-------------------------------------|------------------------------|-------------------------------------------|:----------------:|
@@ -101,7 +101,7 @@ The PDK is equipped with **8 GB of SDRAM**, mapped across two physical address r
 | Lower 2 GB   | `0x00_8000_0000` – `0x00_FFFF_FFFF`  | `0x0_0000_0000` – `0x0_7FFF_FFFF`        |
 | Upper 6 GB   | `0x08_8000_0000` – `0x09_FFFF_FFFF`   | `0x0_8000_0000` – `0x1_FFFF_FFFF`        |
 
-> *![Agilex 5 Address Mapping](../../images/agilex3-address-mapping.png)*
+> *![Agilex 5 Address Mapping](images/agilex3-address-mapping.png)*
 
 > **Note:** System Console/Nios V operates in a **32-bit address space** and cannot directly access 64-bit SDRAM addresses. The address `0x9_0200_0000` is an example of a target address in the upper 6GB region.
 
@@ -150,14 +150,14 @@ Compute_address = F2SDRAM Address Span Extender IP window slave address (0x8000_
 
 #### Example Target Address
 
-> *![F2SDRAM Lower Part Example](../../images/f2sdram-lower-part-example.png)*
+> *![F2SDRAM Lower Part Example](images/f2sdram-lower-part-example.png)*
 > *Figure 1: F2SDRAM Lower 2GB Example*
 
 | Target Address | CSR_H | CSR_L       | F2SDRAM address span extender window slave address + offset |
 |----------------|-------|-------------|-------------------------------------------------------------|
 | 0xC200_0000    | 0x0   | 0xC000_0000 | 0x8000_0000 (f2sdram) + 0x0200_0000 = 0x8200_0000           |
 
-> *![F2SDRAM Upper Part Example](../../images/f2sdram-upper-part-example.png)*
+> *![F2SDRAM Upper Part Example](images/f2sdram-upper-part-example.png)*
 > *Figure 2: F2SDRAM Upper 6GB Example*
 
 | Target Address | CSR_H | CSR_L       | F2SDRAM address span extender window slave address + offset |
@@ -182,16 +182,16 @@ Compute_address = F2SDRAM Address Span Extender IP window slave address (0x8000_
 ### Notes
 - There are 1 user push-button inputs and 2 LED outputs that is connected to fpga pins on Agilex 3 FPGA and SoC C-Series Development Kit.
   -  Only the lower bit of LED outputs are available for software to control. The most significant bit of the LED is used in GHRD top module as heartbeat led. This LED blinks when the fpga design is loaded. Users will not be able to control this LED with HPS software, for example U-Boot or Linux.
-- The peripherial is accessed via the LWH2F bridge and have offset of 0x0_2000_0000. Refer to [Total Address Map Graphicals](https://docs.altera.com/r/docs/848530/26.1/hard-processor-system-technical-reference-manual-agilextm-3-socs/total-address-map-graphical) for more information.
-- The FPGA IRQ has offset of 17 when mapped to Generic Interrupt Controller (GIC) in device tree structure(dts). Refer to [GIC Shared Peripheral Interrupts Map for the SoC HPS](https://docs.altera.com/r/docs/848530/26.1/hard-processor-system-technical-reference-manual-agilextm-3-socs/gic-shared-peripheral-interrupts-map-for-the-soc-hps)
+- The peripherial is accessed via the LWH2F bridge and have offset of 0x0_2000_0000. Refer to [Total Address Map Graphicals](https://docs.altera.com/r/docs/848530/26.3/hard-processor-system-technical-reference-manual-agilex-3-socs/total-address-map-graphical) for more information.
+- The FPGA IRQ has offset of 17 when mapped to Generic Interrupt Controller (GIC) in device tree structure(dts). Refer to [GIC Shared Peripheral Interrupts Map for the SoC HPS](https://docs.altera.com/r/docs/848530/26.3/hard-processor-system-technical-reference-manual-agilex-3-socs/gic-shared-peripheral-interrupts-map-for-the-soc-hps)
 
 ## GHRD Build
 **Prerequisites**
-- Altera Quartus Prime 26.1.1
+- Altera Quartus Prime 26.3
 - Python 3.11.5 (only required when using command line to build)
 
 ### Using Quartus GUI
-1. Launch Quartus Prime 26.1.1
+1. Launch Quartus Prime 26.3
 2. Open the design project. E.g top.qpf.
 3. Click the play button to compile the design.
 4. The compiled sof can be found in output_files folder of the project path.

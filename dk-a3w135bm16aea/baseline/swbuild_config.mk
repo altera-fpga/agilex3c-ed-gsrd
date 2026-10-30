@@ -617,3 +617,55 @@ $(SW_YOCTO_LINUX_MAINLINE_QSPI_TARGET)-install-sw : \
 	mainline-qspi-postprocess \
 	$(addprefix $(INSTALL_ROOT_ARTIFACTS)/software/yocto_linux_mainline_qspi/, $(YOCTO_MAINLINE_QSPI_ARTIFACT_FILES))
 
+
+# HPS Baremetal example
+
+# HPS Baremetal (SD boot) — Agilex 3
+SW_HPS_BM_SD_TARGET := software-hps_baremetal_sd
+ALL_SW_TARGET_STEM_NAMES += $(SW_HPS_BM_SD_TARGET)
+
+HPS_BM_SD_SRC_DIR   := software/hps_baremetal/baremetal_ddr
+HPS_BM_SD_BUILD_DIR := $(HPS_BM_SD_SRC_DIR)/build_sd
+HPS_BM_SD_SOF       := output_files/$(REVISION).sof
+HPS_BM_SD_INSTALL   := $(INSTALL_ROOT_BINARIES)/software/hps_baremetal_sd
+
+.PHONY: $(SW_HPS_BM_SD_TARGET)-build-sw
+$(SW_HPS_BM_SD_TARGET)-build-sw: $(HPS_BM_SD_SOF)
+	cd $(HPS_BM_SD_SRC_DIR) && SOF_PATH=$(abspath $(HPS_BM_SD_SOF)) ./build.sh sd
+
+.PHONY: $(SW_HPS_BM_SD_TARGET)-clean-sw
+$(SW_HPS_BM_SD_TARGET)-clean-sw:
+	rm -rf $(HPS_BM_SD_BUILD_DIR)
+	rm -f  $(HPS_BM_SD_SRC_DIR)/baremetal.elf $(HPS_BM_SD_SRC_DIR)/baremetal.hps.sd.img $(HPS_BM_SD_SRC_DIR)/fsbl_sd.sof
+
+.PHONY: $(SW_HPS_BM_SD_TARGET)-install-sw
+$(SW_HPS_BM_SD_TARGET)-install-sw: $(SW_HPS_BM_SD_TARGET)-build-sw | $(INSTALL_ROOT_BINARIES)
+	mkdir -p $(HPS_BM_SD_INSTALL)
+	-cp -f $(HPS_BM_SD_BUILD_DIR)/hps_baremetal.elf $(HPS_BM_SD_INSTALL)/baremetal.elf
+	-cp -f $(HPS_BM_SD_SRC_DIR)/baremetal.hps.sd.img $(HPS_BM_SD_INSTALL)/
+	-cp -f $(HPS_BM_SD_SRC_DIR)/fsbl_sd.sof          $(HPS_BM_SD_INSTALL)/
+
+# HPS Baremetal (OCRAM boot) — Agilex 3
+SW_HPS_BM_OCRAM_TARGET := software-hps_baremetal_ocram
+ALL_SW_TARGET_STEM_NAMES += $(SW_HPS_BM_OCRAM_TARGET)
+
+HPS_BM_OCRAM_SRC_DIR   := software/hps_baremetal/baremetal_ocram
+HPS_BM_OCRAM_BUILD_DIR := $(HPS_BM_OCRAM_SRC_DIR)/build_ocram
+HPS_BM_OCRAM_SOF       := output_files/$(REVISION).sof
+HPS_BM_OCRAM_INSTALL   := $(INSTALL_ROOT_BINARIES)/software/hps_baremetal_ocram
+
+.PHONY: $(SW_HPS_BM_OCRAM_TARGET)-build-sw
+$(SW_HPS_BM_OCRAM_TARGET)-build-sw:
+	cd $(HPS_BM_OCRAM_SRC_DIR) && ./build.sh
+
+.PHONY: $(SW_HPS_BM_OCRAM_TARGET)-clean-sw
+$(SW_HPS_BM_OCRAM_TARGET)-clean-sw:
+	rm -rf $(HPS_BM_OCRAM_BUILD_DIR)
+	rm -f  $(HPS_BM_OCRAM_SRC_DIR)/baremetal.elf $(HPS_BM_OCRAM_SRC_DIR)/baremetal.bin $(HPS_BM_OCRAM_SRC_DIR)/baremetal.hex
+
+.PHONY: $(SW_HPS_BM_OCRAM_TARGET)-install-sw
+$(SW_HPS_BM_OCRAM_TARGET)-install-sw: $(SW_HPS_BM_OCRAM_TARGET)-build-sw | $(INSTALL_ROOT_BINARIES)
+	mkdir -p $(HPS_BM_OCRAM_INSTALL)
+	-cp -f $(HPS_BM_OCRAM_BUILD_DIR)/hps_baremetal.elf $(HPS_BM_OCRAM_INSTALL)/baremetal.elf
+	-cp -f $(HPS_BM_OCRAM_BUILD_DIR)/hps_baremetal.bin $(HPS_BM_OCRAM_INSTALL)/baremetal.bin
+	-cp -f $(HPS_BM_OCRAM_BUILD_DIR)/hps_baremetal.hex $(HPS_BM_OCRAM_INSTALL)/baremetal.hex

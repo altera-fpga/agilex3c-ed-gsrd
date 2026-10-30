@@ -48,6 +48,7 @@ SRC_URI:append = " file://agilex5.scc \
 		   file://sensors.scc \
 		   file://ubifs.scc \
            file://usbedac.scc \
+           file://maxlinear.scc \
 "
 
 # Auto-add all DTS / DTSI into SRC_URI at PARSE TIME

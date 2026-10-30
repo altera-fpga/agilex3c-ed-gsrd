@@ -23,9 +23,9 @@ This is applicable to all designs.
   - 256KB of FPGA On-Chip Memory
 
 ## Dependency
-* Altera Quartus Prime 26.1.1
+* Altera Quartus Prime 26.3
 * Supported Board
-  - Agilex 3 FPGA and SoC C-Series Development Kit: [Devkit User Guide](https://docs.altera.com/r/docs/851698/current/agilextm-3-fpga-and-soc-c-series-development-kit-user-guide/overview)
+  - Agilex 3 FPGA and SoC C-Series Development Kit: [Devkit User Guide](https://docs.altera.com/r/docs/851698/current/agilex-3-fpga-and-soc-c-series-development-kit-user-guide/overview)
   ![Agilex 3 FPGA and SoC C-Series Development Kit](images/agilex3_soc_devkit.png)
 
 ## Tested Platform for the GHRD Build Flow
@@ -35,13 +35,13 @@ This is applicable to all designs.
 
 Several tools are required to be in the path.
 
-* Altera Quartus Prime 26.1.1
+* Altera Quartus Prime 26.3
 * Python 3.11.5 (only required when using command line to build)
 
 ### Example Setup for Altera Quartus Prime tools
 This is recommended, when using command line to build.
 ```bash
-export QUARTUS_ROOTDIR=~/intelFPGA_pro/26.1.1/quartus
+export QUARTUS_ROOTDIR=~/intelFPGA_pro/26.3/quartus
 ```
 Note: Adapt the path above to where Quartus Prime is installed.
 

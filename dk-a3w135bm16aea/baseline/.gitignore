@@ -3,33 +3,45 @@
 /output_files/
 /qdb/
 /tmp-clearbox/
-/.qsys_edit/
 
-# IP generated subdirectories
-/ip/baseline_top/*
-!/ip/baseline_top/*.ip
-
-/ip/shell_subsys/*
-!/ip/shell_subsys/*.ip
-
-/ip/fabric_subsys/*
-!/ip/fabric_subsys/*.ip
-
-/ip/niosv_subsys/*
-!/ip/niosv_subsys/*.ip
-
-/ip/hps_subsys/*
-!/ip/hps_subsys/*.ip
-
-/baseline_top/
-/fabric_subsys/
-/shell_subsys/
-/niosv_subsys/
-/hps_subsys/
-/output_files/
-
-/sim_setup_baseline/
-
+# Log files created by Quartus
+quartus.log
+quartus.rec
+quartus.rec.log.flock
+quartus.log.save
+quartus.rec.save
+serv_req_info.txt
 *.qws
-baseline_assignment_defaults.qdf
-board.info
+*.qdf
+*.rpt
+
+# IP generated subdirectories (top-level custom IP)
+/src/ip/*
+!/src/ip/*.ip
+
+# VDS subsystem generated outputs (keep source .vds and checked-in .ip)
+/src/vds/baseline_top/*
+!/src/vds/baseline_top/ip/*.ip
+!/src/vds/baseline_top/*.vds
+
+/src/vds/fabric_subsys/*
+!/src/vds/fabric_subsys/ip/*.ip
+!/src/vds/fabric_subsys/*.vds
+
+/src/vds/hps_subsys/*
+!/src/vds/hps_subsys/ip/*.ip
+!/src/vds/hps_subsys/*.vds
+
+/src/vds/niosv_subsys/*
+!/src/vds/niosv_subsys/ip/*.ip
+!/src/vds/niosv_subsys/*.vds
+
+/src/vds/shell_subsys/*
+!/src/vds/shell_subsys/ip/*.ip
+!/src/vds/shell_subsys/*.vds
+
+# Simscript directories
+/sim_setup_baseline*/
+
+# VDS generated directories
+/gen/
